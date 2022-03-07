@@ -4,7 +4,7 @@ const uppercaseAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 const numerics = "1234567890"
 const specialCharacters = "!\"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~"
 
-var passInfo = {
+let passInfo = {
   length: 0,
   lowercase: true,
   uppercase: true,
@@ -35,8 +35,8 @@ function getParams() {
 }
 
 function generatePassword() {
-  var password;
-  var characterOptions = '';
+  let password = '';
+  let characterOptions = '';
   getLength();
   getParams();
   if (passInfo.lowercase) {
@@ -51,7 +51,11 @@ function generatePassword() {
   if (passInfo.special) {
     characterOptions += specialCharacters
   }
-  console.log(characterOptions)
+  for (let i = 0; i < passInfo.length; i++) {
+    let randomCharacterFromList = characterOptions[Math.floor(Math.random() * characterOptions.length)]
+    password += randomCharacterFromList;
+  }
+  return password;
 }
 
 // Get references to the #generate element
