@@ -1,4 +1,9 @@
 // Assignment code here
+const lowercaseAlphabet = "abcdefghijklmnopqrstuvwxyz"
+const uppercaseAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+const numerics = "1234567890"
+const specialCharacters = "!\"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~"
+
 var passInfo = {
   length: 0,
   lowercase: true,
@@ -13,7 +18,7 @@ function getLength() {
     passInfo.length = Number(passInfo.length);
   }
   else {
-    window.alert('This is not a number! Try again');
+    window.alert('This is not a number between 8 and 128! Try again');
     getLength();
   }
 }
@@ -30,8 +35,23 @@ function getParams() {
 }
 
 function generatePassword() {
+  var password;
+  var characterOptions = '';
   getLength();
   getParams();
+  if (passInfo.lowercase) {
+    characterOptions += lowercaseAlphabet
+  }
+  if (passInfo.uppercase) {
+    characterOptions += uppercaseAlphabet
+  }
+  if (passInfo.numeric) {
+    characterOptions += numerics
+  }
+  if (passInfo.special) {
+    characterOptions += specialCharacters
+  }
+  console.log(characterOptions)
 }
 
 // Get references to the #generate element
